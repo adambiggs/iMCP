@@ -377,9 +377,16 @@ Each note's contents are stored as a gzip-compressed protocol buffer:
 the text, followed by runs that give the formatting of each part of it.
 Tables are stored separately, as the state of a CRDT
 that lists the rows, the columns, and the cell at each intersection.
-The Notes service decodes both and returns notes as Markdown.
 Notes locked with a password are encrypted,
 so iMCP can find them by title but can't read their contents.
+
+For this project, we created [TopoText][topotext]:
+a Swift package for reading the Notes database,
+named after Apple's internal name for the note text format.
+It builds on the reverse engineering in Jon Baumann's
+[apple_cloud_notes_parser][apple-cloud-notes-parser]
+and Steve Dunham's [notesutils][notesutils].
+The Notes service reads notes with TopoText and returns them as Markdown.
 
 ### JSON-LD for Tool Results
 
@@ -583,6 +590,7 @@ This project is not affiliated with, endorsed, or sponsored by Apple Inc.
 
 [amp]: https://ampcode.com
 [app-sandbox]: https://developer.apple.com/documentation/security/app-sandbox
+[apple-cloud-notes-parser]: https://github.com/threeplanetssoftware/apple_cloud_notes_parser
 [bonjour]: https://developer.apple.com/bonjour/
 [claude-app]: https://claude.ai/download
 [claude-code]: https://claude.com/product/claude-code
@@ -597,8 +605,10 @@ This project is not affiliated with, endorsed, or sponsored by Apple Inc.
 [mcp]: https://modelcontextprotocol.io/introduction
 [mcp-clients]: https://modelcontextprotocol.io/clients
 [mcp-transports]: https://modelcontextprotocol.io/docs/concepts/architecture#transport-layer
+[notesutils]: https://github.com/dunhamsteve/notesutils
 [nsopenpanel]: https://developer.apple.com/documentation/appkit/nsopenpanel
 [ontology]: https://github.com/mattt/Ontology
 [schema.org]: https://schema.org
 [swift-sdk]: https://github.com/modelcontextprotocol/swift-sdk
+[topotext]: https://github.com/mattt/TopoText
 [typedstream-blog-post]: https://chrissardegna.com/blog/reverse-engineering-apples-typedstream-format/

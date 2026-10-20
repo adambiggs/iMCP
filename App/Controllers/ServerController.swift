@@ -141,7 +141,7 @@ enum ServiceRegistry {
             ServiceConfig(
                 name: "Music",
                 iconName: "music.note",
-                color: .pink,
+                color: .black,
                 service: MusicService.shared,
                 binding: musicEnabled
             ),
